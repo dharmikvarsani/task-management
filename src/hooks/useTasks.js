@@ -2,7 +2,7 @@
 import axios from "axios";
 import useSWR from "swr";
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+const fetcher = (url) => axios.get(url,{ withCredentials: true }).then((res) => res.data);
 
 
 export const useTasks = (status = '') => {
@@ -18,7 +18,7 @@ export const useTasks = (status = '') => {
 }
 
 export const createTask = async (payload) => {
-    const res = await axios.post('/api/task', payload);
+    const res = await axios.post('/api/task', payload , { withCredentials: true });
     return res.data;
 }
 
@@ -34,7 +34,7 @@ export const deleteTask = async (id) => {
 };
 
 export const reassignTask = async (id, payload) => {
-    const res = await axios.put(`/api/task/${id}/reassign`, payload);
+    const res = await axios.put(`/api/task/${id}/reassign`, payload , { withCredentials: true }); ;
     return res.data;
 }
 
