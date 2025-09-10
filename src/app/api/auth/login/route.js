@@ -18,7 +18,7 @@ export const POST = async (req) => {
             path: "/",
             maxAge: 7 * 24 * 60 * 60,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "lax",
+            sameSite: "strict",
         });
 
         return NextResponse.json({ message: "Login successful", user });
